@@ -23,6 +23,8 @@ st.subheader("Olvídate de la burocracia! Cambia o vende en línea y en menos de
 # Convertir las selecciones del usuario de nuevo a las variables originales
 manufacturer = st.selectbox('Fabricante', [''] + list(inverse_factorization_dict['manufacturer'].keys()), key='manufacturer')
 model_input = st.selectbox('Modelo', [''] + list(inverse_factorization_dict['model'].keys()), key='model')
+year = st.number_input('Año', min_value=1997, max_value=2022, value=2010, key='year')
+odometer = st.number_input('Odómetro (millas)', min_value=0, key='odometer')
 fuel = st.selectbox('Combustible', [''] + list(inverse_factorization_dict['fuel'].keys()), key='fuel')
 transmission = st.selectbox('Transmisión', [''] + list(inverse_factorization_dict['transmission'].keys()), key='transmission')
 drive = st.selectbox('Tracción', [''] + list(inverse_factorization_dict['drive'].keys()), key='drive')
@@ -51,5 +53,9 @@ if st.button('Tasar Auto', key='submit_button'):
     
     # Realizar la predicción
     prediction = modelo.predict(data)
+    oferta = 0.8 * prediction[0]
     # Mostrar la oferta estimada con estilo
-    st.markdown(f"<h2 style='color: #000000;'>La oferta estimada por tu vehiculo sera: ${prediction[0]:,.2f}</h2>", unsafe_allow_html=True)
+    st.markdown(
+            f"<h2 style='color: #000000;'>La oferta estimada por tu {manufacturer} {model_input} será de: ${oferta:,.2f}</h2>", 
+            unsafe_allow_html=True
+        )
