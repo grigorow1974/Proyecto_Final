@@ -80,7 +80,7 @@ if st.button('Tasar Auto', key='submit_button'):
     
     # Realizar la predicción
     prediction = modelo.predict(data_scaled)
-    oferta = 0.8 * prediction[0]
+    oferta = 0.75 * prediction[0]
     st.markdown(
     f"<h2 style='color: #000000;'>La oferta estimada por tu {manufacturer_original} {model_original} será de: ${oferta:,.2f}</h2>", 
     unsafe_allow_html=True
