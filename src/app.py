@@ -83,6 +83,10 @@ if st.button('Tasar Auto', key='submit_button'):
     # Se oferta el 75% del valor predico
     oferta = 0.75 * prediction[0]
     st.markdown(
-    f"<h2 style='color: #000000;'>La oferta estimada por tu {manufacturer_original} {model_original} será de: ${oferta:,.2f}</h2>", 
+    f"<h2 style='color: #FFFFFF;'>La oferta estimada por tu {manufacturer_original} {model_original} será de: ${oferta:,.2f}</h2>", 
     unsafe_allow_html=True
         )
+    
+    # Añadir el botón "Agende su visita"
+    if st.button('Agende su visita'):
+        pass
