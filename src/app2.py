@@ -19,14 +19,14 @@ with open('C://Users//sergi//Proyectos//Proyecto_Final//src//fit_transform.pkl',
 inverse_factorization_dict = {col: {str(val): key for key, val in factorization_dict[col].items()} for col in factorization_dict.columns}
 
 # Cargar el CSV de modelos limpios
-modelos_df = pd.read_csv('C:\\Users\\sergi\\Proyectos\\Proyecto_Final\\data\\processed\\modelos.csv', sep=';')
+modelos_df = pd.read_csv('C:\\Users\\sergi\\Proyectos\\Proyecto_Final\\data\\processed\\modelos.csv')
 
 # Obtener la lista única de fabricantes
-fabricantes = sorted(modelos_df['Marca'].unique())
+fabricantes = sorted(modelos_df['manufacturer'].unique())
 
 # Función para obtener los modelos de un fabricante específico
 def get_modelos(fabricante):
-    return sorted(modelos_df[modelos_df['Marca'] == fabricante]['Modelo'].tolist())
+    return sorted(modelos_df[modelos_df['manufacturer'] == fabricante]['model'].tolist())
 
 # Función para factorizar inversamente
 def inverse_factorize(column, value):
